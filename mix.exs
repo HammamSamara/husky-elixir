@@ -4,11 +4,11 @@ defmodule Husky.MixProject do
   def project do
     [
       app: :husky,
-      version: "1.0.3",
+      version: "1.0.4",
       description:
         "Git hooks made easy. Husky can prevent bad git commit, git push and more 🐶 ❤️ woof! - Elixir equivalent of the husky npm package",
       package: package(),
-      elixir: "~> 1.7",
+      elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       escript: escript(),
@@ -38,8 +38,8 @@ defmodule Husky.MixProject do
   defp deps do
     [
       {:poison, ">= 1.2.1", optional: true},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:credo, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 end

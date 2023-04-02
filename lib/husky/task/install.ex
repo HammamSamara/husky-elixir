@@ -63,17 +63,19 @@ defmodule Mix.Tasks.Husky.Install do
 
   defp create_script(%Script{path: path, content: content})
        when is_binary(path) and is_binary(content) do
-    with {:ok, fd} <- File.open(path, [:write]) do
-      try do
-        IO.binwrite(fd, content)
-        {File.chmod!(path, 0o755), :create_script}
-      rescue
-        _ -> {:error, :create_script}
-      after
-        File.close(fd)
-      end
-    else
-      _ -> {:error, :create_script}
+    case File.open(path, [:write]) do
+      {:ok, fd} ->
+        try do
+          IO.binwrite(fd, content)
+          {File.chmod!(path, 0o755), :create_script}
+        rescue
+          _ -> {:error, :create_script}
+        after
+          File.close(fd)
+        end
+
+      _ ->
+        {:error, :create_script}
     end
   end
 

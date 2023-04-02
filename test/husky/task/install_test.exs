@@ -43,12 +43,7 @@ defmodule Husky.Task.InstallTest do
       assert """
              #!/usr/bin/env sh
              # #{Util.app()}
-             # #{Util.version()} #{
-               :os.type()
-               |> Tuple.to_list()
-               |> Enum.map(&Atom.to_string/1)
-               |> Enum.map(&(&1 <> " "))
-             }
+             # #{Util.version()} #{:os.type() |> Tuple.to_list() |> Enum.map(&Atom.to_string/1) |> Enum.map(&(&1 <> " "))}
              export MIX_ENV=test && cd ../../
              SCRIPT_PATH="./priv/husky"
              HOOK_NAME=`basename "$0"`

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :husky,
   host_path: "./dev/sandbox",

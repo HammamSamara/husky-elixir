@@ -71,7 +71,7 @@ defmodule Husky.Task.ExecuteTest do
 
       result =
         """
-        mix husky.execute pre-commit -c #{file}
+        MIX_ENV=test mix husky.execute pre-commit -c #{file}
         """
         |> to_charlist()
         |> :os.cmd()
